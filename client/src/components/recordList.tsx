@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import XMarkIcon from "@heroicons/react/24/outline/XMarkIcon";
  
 const Record = (props:any) => (
- <tr>
-   <td>{props.record.name}</td>
-   <td>{props.record.roaster}</td>
-   <td>{props.record.roast}</td>
-   <td>
-     <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> |
-     <button className="btn btn-link"
-       onClick={() => {
-         props.deleteRecord(props.record._id);
-       }}
-     >
-       Delete
-     </button>
-   </td>
- </tr>
+  <div className="flex flex-col border border-black rounded-md bg-coffeeSecond self-center w-96 p-4 mb-4 relative">
+    <button className="absolute top-0 right-0 p-1"
+        onClick={() => {
+            props.deleteRecord(props.record._id);
+        }}
+        ><XMarkIcon className="w-8"/></button>
+    <div className="">Nom : {props.record.name}</div>
+    <div className="">Torréfacteur : {props.record.roaster}</div>
+    <div className="">Degré de torréfaction : {props.record.roast}</div>
+    <div className="flex self-end gap-2 mt-2">
+        <Link className="" to={`/edit/${props.record._id}`}>Modifier</Link>
+        
+    </div>
+  </div>
 );
  
 export default function RecordList() {
@@ -67,19 +67,9 @@ export default function RecordList() {
  
  // This following section will display the table with the records of individuals.
  return (
-   <div>
-     <h3>Record List</h3>
-     <table className="table table-striped" style={{ marginTop: 20 }}>
-       <thead>
-         <tr>
-           <th>Name</th>
-           <th>Roaster</th>
-           <th>Roast</th>
-           <th>Action</th>
-         </tr>
-       </thead>
-       <tbody>{recordList()}</tbody>
-     </table>
-   </div>
+  <div className="flex flex-col">
+  <h3 className="text-xl font-bold m-4">Publications</h3>
+  {recordList()}
+  </div>
  );
 }

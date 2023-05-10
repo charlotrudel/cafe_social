@@ -66,75 +66,76 @@ export default function Edit() {
  
  // This following section will display the form that takes input from the user to update the data.
  return (
-  <div>
-  <h3>Edit coffee</h3>
-  <form onSubmit={onSubmit}>
-    <div className="form-group">
-      <label htmlFor="name">Name</label>
-      <input
-        type="text"
-        className="form-control"
-        id="name"
-        value={form.name}
-        onChange={(e) => updateForm({ name: e.target.value })}
-      />
-    </div>
-    <div className="form-group">
-      <label htmlFor="roaster">Roaster</label>
-      <input
-        type="text"
-        className="form-control"
-        id="roaster"
-        value={form.roaster}
-        onChange={(e) => updateForm({ roaster: e.target.value })}
-      />
-    </div>
-    <div className="form-group">
-      <div className="form-check form-check-inline">
+  <div className="flex flex-col items-center">
+    <h3 className="text-xl">Modifiez vos notes</h3>
+    <form onSubmit={onSubmit} className="flex flex-col max-w-lg gap-2 items-center border-t py-2">
+      <div>
+        <label htmlFor="name">Nom</label>
         <input
-          className="form-check-input"
-          type="radio"
-          name="roastOptions"
-          id="roastLight"
-          value="Light"
-          checked={form.roast === "Light"}
-          onChange={(e) => updateForm({ roast: e.target.value })}
+          type="text"
+          className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-lbf-orange focus:ring-1 focus:ring-lbf-orange"
+          id="name"
+          value={form.name}
+          onChange={(e) => updateForm({ name: e.target.value })}
         />
-        <label htmlFor="roastLight" className="form-check-label">Light</label>
       </div>
-      <div className="form-check form-check-inline">
+      <div className="">
+        <label htmlFor="roaster">Torréfacteur</label>
         <input
-          className="form-check-input"
-          type="radio"
-          name="roastOptions"
-          id="roastMedium"
-          value="Medium"
-          checked={form.roast === "Medium"}
-          onChange={(e) => updateForm({ roast: e.target.value })}
+          type="text"
+          className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-lbf-orange focus:ring-1 focus:ring-lbf-orange"
+          id="roaster"
+          value={form.roaster}
+          onChange={(e) => updateForm({ roaster: e.target.value })}
         />
-        <label htmlFor="roastMedium" className="form-check-label">Medium</label>
       </div>
-      <div className="form-check form-check-inline">
+      <div className="self-start">
+        <label>Degré de torréfaction</label>
+        <div className="">
+          <input
+            className=""
+            type="radio"
+            name="roastOptions"
+            id="roastLight"
+            value="Light"
+            checked={form.roast === "Light"}
+            onChange={(e) => updateForm({ roast: e.target.value })}
+          />
+          <label htmlFor="roastLight" className="ml-1">Light</label>
+        </div>
+        <div className="">
+          <input
+            className=""
+            type="radio"
+            name="roastOptions"
+            id="roastMedium"
+            value="Medium"
+            checked={form.roast === "Medium"}
+            onChange={(e) => updateForm({ roast: e.target.value })}
+          />
+          <label htmlFor="roastMedium" className="ml-1">Medium</label>
+        </div>
+        <div className="">
+          <input
+            className=""
+            type="radio"
+            name="roastOptions"
+            id="roastDark"
+            value="Dark"
+            checked={form.roast === "Dark"}
+            onChange={(e) => updateForm({ roast: e.target.value })}
+          />
+          <label htmlFor="roastDark" className="ml-1">Dark</label>
+        </div>
+      </div>
+      <div className="">
         <input
-          className="form-check-input"
-          type="radio"
-          name="roastOptions"
-          id="roastDark"
-          value="Dark"
-          checked={form.roast === "Dark"}
-          onChange={(e) => updateForm({ roast: e.target.value })}
+          type="submit"
+          value="Mettre à jour"
+          className="cursor-pointer border rounded-md border-black p-2 bg-coffeeSecond shadow-sm shadow-[#7c5f3b]"
         />
-        <label htmlFor="roastDark" className="form-check-label">Dark</label>
       </div>
-    </div>
-    <div className="form-group">
-      <input
-        type="submit"
-        value="Update record"
-        className="btn btn-primary"
-      />
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
  );
 }

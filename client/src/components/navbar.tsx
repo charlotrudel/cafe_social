@@ -1,8 +1,5 @@
 import React from "react";
  
-// We import bootstrap to make our application look better.
-import "bootstrap/dist/css/bootstrap.css";
- 
 // We import NavLink to utilize the react router.
 import { NavLink } from "react-router-dom";
  
@@ -10,27 +7,16 @@ import { NavLink } from "react-router-dom";
 export default function Navbar() {
  return (
    <div>
-     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-       <NavLink className="navbar-brand" to="/">
-       <h1>Café Social</h1>
+     <nav className="flex justify-between items-center">
+       <NavLink className="m-8" to="/">
+        <h1 className="text-4xl font-bold">Café Social</h1>
        </NavLink>
-       <button
-         className="navbar-toggler"
-         type="button"
-         data-toggle="collapse"
-         data-target="#navbarSupportedContent"
-         aria-controls="navbarSupportedContent"
-         aria-expanded="false"
-         aria-label="Toggle navigation"
-       >
-         <span className="navbar-toggler-icon"></span>
-       </button>
  
-       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul className="navbar-nav ml-auto">
-           <li className="nav-item">
-             <NavLink className="nav-link" to="/create">
-               Create Record
+       <div className=" m-4" id="navbarSupportedContent">
+         <ul>
+           <li>
+             <NavLink to="/create" className="border rounded-md border-black p-2 bg-coffeeSecond shadow-sm shadow-[#7c5f3b]">
+               Nouveau café
              </NavLink>
            </li>
          </ul>

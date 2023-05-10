@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar";
 import RecordList from "./components/recordList";
@@ -9,12 +8,12 @@ import Create from "./components/create";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="bg-coffeeMain min-h-screen">
+      <header>
         <Navbar />
       </header>
       <Routes>
-        <Route path="/" element={<RecordList />} />
+        <Route path="/" element={<div><RecordList /></div>} />
         <Route path="/edit/:id" element={<Edit />} />
         <Route path="/create" element={<Create />} />
       </Routes>
