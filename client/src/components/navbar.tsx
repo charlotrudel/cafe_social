@@ -8,14 +8,14 @@ export default function Navbar() {
  return (
    <div>
      <nav className="flex justify-between items-center">
-       <NavLink className="m-8" to="/">
-        <h1 className="text-4xl font-bold">Café Social</h1>
+       <NavLink className="my-4 mx-2 md:m-8" to="/">
+        <h1 className="text-3xl font-bold">Café Social</h1>
        </NavLink>
  
-       <div className=" m-4" id="navbarSupportedContent">
+       <div className="" id="navbarSupportedContent">
          <ul>
            <li>
-             <NavLink to="/create" className="border rounded-md border-black p-2 bg-coffeeSecond shadow-sm shadow-[#7c5f3b]">
+             <NavLink to="/create" className="border rounded-md border-black my-4 mx-2 md:m-8 p-2 bg-coffeeSecond shadow-sm shadow-[#7c5f3b]">
                Nouveau café
              </NavLink>
            </li>

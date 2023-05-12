@@ -23,13 +23,31 @@ router.get("/:id", async (req, res) => {
 
 // This section will help you create a new record.
 router.post("/", async (req, res) => {
-  let newCoffee = {
-    name: req.body.name,
+  let newRecord = {
+    userName: req.body.userName,
+    coffeeName: req.body.coffeeName,
     roaster: req.body.roaster,
     roast: req.body.roast,
+    aromaQuantity: req.body.aromaQuantity,
+    aromaQuality: req.body.aromaQuality,
+    aromaNotes: req.body.aromaNotes,
+    acidityQuantity: req.body.acidityQuantity,
+    acidityQuality: req.body.acidityQuality,
+    acidityNotes: req.body.acidityNotes,
+    sweetnessQuantity: req.body.sweetnessQuantity,
+    sweetnessQuality: req.body.sweetnessQuality,
+    sweetnessNotes: req.body.sweetnessNotes,
+    bodyQuantity: req.body.bodyQuantity,
+    bodyQuality: req.body.bodyQuality,
+    bodyNotes: req.body.bodyNotes,
+    finishQuantity: req.body.finishQuantity,
+    finishQuality: req.body.finishQuality,
+    finishNotes: req.body.finishNotes,
+    flavourNotes: req.body.flavourNotes,
+    overallScore: req.body.overallScore
   };
   let collection = await db.collection("records");
-  let result = await collection.insertOne(newCoffee);
+  let result = await collection.insertOne(newRecord);
   res.send(result).status(204);
 });
 
@@ -38,9 +56,27 @@ router.patch("/:id", async (req, res) => {
   const query = { _id: new ObjectId(req.params.id) };
   const updates =  {
     $set: {
-      name: req.body.name,
+      userName: req.body.userName,
+      coffeeName: req.body.coffeeName,
       roaster: req.body.roaster,
       roast: req.body.roast,
+      aromaQuantity: req.body.aromaQuantity,
+      aromaQuality: req.body.aromaQuality,
+      aromaNotes: req.body.aromaNotes,
+      acidityQuantity: req.body.acidityQuantity,
+      acidityQuality: req.body.acidityQuality,
+      acidityNotes: req.body.acidityNotes,
+      sweetnessQuantity: req.body.sweetnessQuantity,
+      sweetnessQuality: req.body.sweetnessQuality,
+      sweetnessNotes: req.body.sweetnessNotes,
+      bodyQuantity: req.body.bodyQuantity,
+      bodyQuality: req.body.bodyQuality,
+      bodyNotes: req.body.bodyNotes,
+      finishQuantity: req.body.finishQuantity,
+      finishQuality: req.body.finishQuality,
+      finishNotes: req.body.finishNotes,
+      flavourNotes: req.body.flavourNotes,
+      overallScore: req.body.overallScore
     }
   };
 
