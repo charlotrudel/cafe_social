@@ -1,15 +1,9 @@
 ##Server
 
-# dependencies
-/server/node_modules
-
 # environment variables
 /server/.env
 
 ##Client
-
-# dependencies
-/client/node_modules
 
 # production
 /client/build
@@ -24,3 +18,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# dependencies
+*node_modules
