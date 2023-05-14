@@ -22,3 +22,27 @@ export default interface CoffeeRecordInterface {
     flavourNotes: string;
     overallScore: number;
 }
+
+export const emptyRecord = {
+    userName: '',
+    coffeeName: '',
+    roaster: '',
+    roast: '',
+    aromaQuantity: 0,
+    aromaQuality: 0,
+    aromaNotes: '',
+    acidityQuantity: 0,
+    acidityQuality: 0,
+    acidityNotes: '',
+    sweetnessQuantity: 0,
+    sweetnessQuality: 0,
+    sweetnessNotes: '',
+    bodyQuantity: 0,
+    bodyQuality: 0,
+    bodyNotes: '',
+    finishQuantity: 0,
+    finishQuality: 0,
+    finishNotes: '',
+    flavourNotes: '',
+    overallScore: 0,
+};
