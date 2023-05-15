@@ -26,7 +26,10 @@ router.post('/', async (req, res) => {
     let newRecord = {
         userName: req.body.userName,
         coffeeName: req.body.coffeeName,
+        origin: req.body.origin,
+        process: req.body.process,
         roaster: req.body.roaster,
+        roasterNotes: req.body.roasterNotes,
         roast: req.body.roast,
         aromaQuantity: req.body.aromaQuantity,
         aromaQuality: req.body.aromaQuality,
@@ -58,7 +61,10 @@ router.patch('/:id', async (req, res) => {
         $set: {
             userName: req.body.userName,
             coffeeName: req.body.coffeeName,
+            origin: req.body.origin,
+            process: req.body.process,
             roaster: req.body.roaster,
+            roasterNotes: req.body.roasterNotes,
             roast: req.body.roast,
             aromaQuantity: req.body.aromaQuantity,
             aromaQuality: req.body.aromaQuality,

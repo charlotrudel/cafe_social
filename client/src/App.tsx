@@ -7,7 +7,7 @@ import Create from './components/create';
 
 function App() {
     return (
-        <div className="bg-coffeeMain min-h-screen">
+        <div className="bg-darkBlack min-h-screen text-white">
             <header>
                 <Navbar />
             </header>

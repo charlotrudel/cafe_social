@@ -17,7 +17,7 @@ export default function Navbar() {
                         <li>
                             <NavLink
                                 to="/create"
-                                className="border rounded-md border-black my-4 mx-2 md:m-8 p-2 bg-coffeeSecond shadow-sm shadow-[#7c5f3b]"
+                                className="border rounded-md border-darkLight my-4 mx-2 md:m-8 p-2 bg-darkBlue shadow-sm shadow-darkLight"
                             >
                                 Nouveau café
                             </NavLink>

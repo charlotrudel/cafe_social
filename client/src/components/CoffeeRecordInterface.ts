@@ -2,7 +2,10 @@ export default interface CoffeeRecordInterface {
     _id?: number;
     userName: string;
     coffeeName: string;
+    origin: string;
+    process: string;
     roaster: string;
+    roasterNotes: string;
     roast: string;
     aromaQuantity: number;
     aromaQuality: number;
@@ -26,7 +29,10 @@ export default interface CoffeeRecordInterface {
 export const emptyRecord = {
     userName: '',
     coffeeName: '',
+    origin: '',
+    process: '',
     roaster: '',
+    roasterNotes: '',
     roast: '',
     aromaQuantity: 0,
     aromaQuality: 0,

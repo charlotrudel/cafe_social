@@ -23,9 +23,12 @@ export default function RecordList() {
     return (
         <div className="flex flex-col">
             <h3 className="text-xl font-bold m-4">Publications</h3>
-            {records.map((record: CoffeeRecordInterface) => {
-                return <CoffeeRecord record={record} deleteRecord={() => deleteRecord(record._id)} key={record._id} />;
-            })}
+            <div className='max-w-2xl self-center'>
+                {records.map((record: CoffeeRecordInterface) => {
+                    return <CoffeeRecord record={record} deleteRecord={() => deleteRecord(record._id)} key={record._id} />;
+                })}
+            </div>
+
         </div>
     );
 }
