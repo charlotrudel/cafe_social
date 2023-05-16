@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router';
-import CoffeeRecordForm from './CoffeeRecordForm';
-import CoffeeRecordInterface, { emptyRecord } from './CoffeeRecordInterface';
+import CoffeeRecordForm from '../components/CoffeeRecordForm';
+import CoffeeRecordInterface, { emptyRecord } from '../components/CoffeeRecordInterface';
 
 export default function Edit() {
     const params: any = useParams();

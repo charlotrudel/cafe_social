@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import CoffeeRecordForm from './CoffeeRecordForm';
-import CoffeeRecordInterface, { emptyRecord } from './CoffeeRecordInterface';
+import CoffeeRecordForm from '../components/CoffeeRecordForm';
+import CoffeeRecordInterface, { emptyRecord } from '../components/CoffeeRecordInterface';
 
 export default function Create() {
     const navigate = useNavigate();

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/navbar';
-import RecordList from './components/recordList';
-import Edit from './components/edit';
-import Create from './components/create';
+import RecordList from './pages/recordList';
+import Edit from './pages/edit';
+import Create from './pages/create';
 
 function App() {
     return (

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import CoffeeRecord from './CoffeeRecord';
-import CoffeeRecordInterface from './CoffeeRecordInterface';
+import CoffeeRecord from '../components/CoffeeRecord';
+import CoffeeRecordInterface from '../components/CoffeeRecordInterface';
 import coffeeRecordService from '../services/coffeeRecordService';
 
 export default function RecordList() {
