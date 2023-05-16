@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 type Props = {
     formTitle: string;
     initialState: CoffeeRecordInterface;
-    onSubmit: (e: any, newRecord: CoffeeRecordInterface) => Promise<void>;
+    onSubmit: (e: React.FormEvent, newRecord: CoffeeRecordInterface) => Promise<void>;
 };
 
 export default function CoffeeRecordForm({ formTitle, initialState, onSubmit }: Props) {

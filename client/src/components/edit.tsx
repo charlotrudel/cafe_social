@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import CoffeeRecordForm from './CoffeeRecordForm';
 import CoffeeRecordInterface, { emptyRecord } from './CoffeeRecordInterface';
@@ -36,7 +36,7 @@ export default function Edit() {
         return;
     }, [params.id, navigate]);
 
-    async function onSubmit(e: any, editedRecord: CoffeeRecordInterface) {
+    async function onSubmit(e: React.FormEvent, editedRecord: CoffeeRecordInterface) {
         e.preventDefault();
         // This will send a post request to update the data in the database.
         await fetch(`http://localhost:5050/record/${params.id}`, {

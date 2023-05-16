@@ -7,7 +7,7 @@ export default function Create() {
     const navigate = useNavigate();
 
     // This function will handle the submission.
-    async function onSubmit(e: any, newRecord: CoffeeRecordInterface) {
+    async function onSubmit(e: React.FormEvent, newRecord: CoffeeRecordInterface) {
         e.preventDefault();
 
         // When a post request is sent to the create url, we'll add a new record to the database.

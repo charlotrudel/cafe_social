@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon';
 import CoffeeRecordInterface from './CoffeeRecordInterface';
+import coffeeIcon from "../images/coffee_bean.png"
 
 type Props = {
     record: CoffeeRecordInterface;
@@ -18,7 +19,16 @@ export default function CoffeeRecord({ record, deleteRecord }: Props) {
             >
                 <XMarkIcon className="w-8" />
             </button>
-            <div className="font-semibold mb-1">{record.userName}</div>
+            <div className='flex items-center group max-w-fit'>
+                <div className='flex bg-gradient-to-br from-white to-black p-0.5 m-2 rounded-full transition ease-in-out duration-500 group-hover:rotate-[360deg]'>
+                    <div className='bg-darkBlue rounded-full aspect-square'>
+                        <img src={coffeeIcon} className='aspect-square w-6 m-1 place-self-center transition ease-in-out duration-500 group-hover:rotate-[-360deg]' alt='coffee bean' />
+                    </div>
+                </div>
+
+                <div className="font-semibold mr-2">{record.userName}</div>
+            </div>
+
             <div className='flex justify-between'>
                 <div className='p-2 mr-2 basis-2/5 border-2 border-darkGray rounded-xl'>
                     <div className="">Nom : {record.coffeeName}</div>
