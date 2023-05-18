@@ -2,7 +2,7 @@ import CoffeeRecordInterface from '../components/CoffeeRecordInterface';
 
 // This method fetches the records from the database.
 async function getRecords() {
-    return fetch(`http://localhost:5050/record`)
+    return fetch(`/record`)
         .then((response) => {
             if (!response.ok) {
                 const message = `An error has occurred: ${response.statusText}`;
@@ -17,7 +17,7 @@ async function getRecords() {
 }
 
 async function getRecordById(id: number) {
-    return fetch(`http://localhost:5050/record/${id.toString()}`)
+    return fetch(`/record/${id.toString()}`)
         .then((response) => {
             if (!response.ok) {
                 const message = `An error has occurred: ${response.statusText}`;
@@ -33,7 +33,7 @@ async function getRecordById(id: number) {
 
 // When a post request is sent to the create url, we'll add a new record to the database.
 async function createRecord(newRecord: CoffeeRecordInterface) {
-    await fetch('http://localhost:5050/record', {
+    await fetch('/record', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ async function createRecord(newRecord: CoffeeRecordInterface) {
 }
 
 async function updateRecord(id: number, editedRecord: CoffeeRecordInterface) {
-    await fetch(`http://localhost:5050/record/${id}`, {
+    await fetch(`/record/${id}`, {
         method: 'PATCH',
         body: JSON.stringify(editedRecord),
         headers: {
@@ -58,7 +58,7 @@ async function updateRecord(id: number, editedRecord: CoffeeRecordInterface) {
 
 // This method will delete a record
 async function deleteRecord(records: CoffeeRecordInterface[], id: number | undefined) {
-    await fetch(`http://localhost:5050/record/${id}`, {
+    await fetch(`/record/${id}`, {
         method: 'DELETE',
     }).catch((error) => {
         window.alert(error);
