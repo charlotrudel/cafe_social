@@ -2,16 +2,18 @@ import CoffeeRecordInterface from '../components/CoffeeRecordInterface';
 
 // This method fetches the records from the database.
 async function getRecords() {
-    const response = await fetch(`http://localhost:5050/record`);
-
-    if (!response.ok) {
-        const message = `An error occurred: ${response.statusText}`;
-        window.alert(message);
-        return;
-    }
-
-    const records = await response.json();
-    return records;
+    return fetch(`http://localhost:5050/record`)
+        .then((response) => {
+            if (!response.ok) {
+                const message = `An error has occurred: ${response.statusText}`;
+                window.alert(message);
+                return;
+            }
+            return response.json();
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 }
 
 async function getRecordById(id: number) {
@@ -26,7 +28,6 @@ async function getRecordById(id: number) {
         })
         .catch((error) => {
             console.log(error);
-            return;
         });
 }
 
@@ -40,7 +41,6 @@ async function createRecord(newRecord: CoffeeRecordInterface) {
         body: JSON.stringify(newRecord),
     }).catch((error) => {
         window.alert(error);
-        return;
     });
 }
 
@@ -51,18 +51,18 @@ async function updateRecord(id: number, editedRecord: CoffeeRecordInterface) {
         headers: {
             'Content-Type': 'application/json',
         },
+    }).catch((error) => {
+        window.alert(error);
     });
 }
 
 // This method will delete a record
 async function deleteRecord(records: CoffeeRecordInterface[], id: number | undefined) {
-    //TODO: add error message
     await fetch(`http://localhost:5050/record/${id}`, {
         method: 'DELETE',
+    }).catch((error) => {
+        window.alert(error);
     });
-
-    const newRecords = records.filter((el: CoffeeRecordInterface) => el._id !== id);
-    return newRecords;
 }
 
 let coffeeRecordService = {

@@ -14,8 +14,8 @@ export default function RecordList() {
     }, [records.length]);
 
     async function deleteRecord(id: number | undefined) {
-        let newRecords = await coffeeRecordService.deleteRecord(records, id);
-        setRecords(newRecords);
+        await coffeeRecordService.deleteRecord(records, id);
+        setRecords([]);
     }
 
     // This following section will display the table with the records of individuals.
