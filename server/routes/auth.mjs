@@ -8,14 +8,6 @@ const HASH_ITERATIONS = 10;
 
 const router = express.Router();
 
-//FIXME ROUTE TRÈS TEMPORAIRE POUR AVOIR LA LISTE DES USERS
-//TODO ENLEVER OU SÉCURISER
-router.get('/', async (req, res) => {
-    const collection = db.collection('users');
-    const results = await collection.find({}).toArray();
-    res.send(results).status(200);
-});
-
 // This route registers a new user with a username, email adress and hashed password
 router.post('/register', async (req, res) => {
     const user = req.body;
