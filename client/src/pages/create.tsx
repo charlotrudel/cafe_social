@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 import CoffeeRecordForm from '../components/CoffeeRecordForm';
 import CoffeeRecordInterface, { emptyRecord } from '../components/CoffeeRecordInterface';
+import coffeeRecordService from '../services/coffeeRecordService';
 
 export default function Create() {
     const navigate = useNavigate();
@@ -9,19 +10,7 @@ export default function Create() {
     // This function will handle the submission.
     async function onSubmit(e: React.FormEvent, newRecord: CoffeeRecordInterface) {
         e.preventDefault();
-
-        // When a post request is sent to the create url, we'll add a new record to the database.
-        await fetch('http://localhost:5050/record', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newRecord),
-        }).catch((error) => {
-            window.alert(error);
-            return;
-        });
-
+        await coffeeRecordService.createRecord(newRecord);
         navigate('/');
     }
 

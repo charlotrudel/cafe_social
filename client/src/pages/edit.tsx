@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router';
+import { redirect } from 'react-router-dom';
 import CoffeeRecordForm from '../components/CoffeeRecordForm';
 import CoffeeRecordInterface, { emptyRecord } from '../components/CoffeeRecordInterface';
+import coffeeRecordService from '../services/coffeeRecordService';
 
 export default function Edit() {
     const params: any = useParams();
@@ -10,43 +12,23 @@ export default function Edit() {
     const [initialState, setInitialState] = useState<CoffeeRecordInterface>(emptyRecord);
 
     useEffect(() => {
-        async function fetchData() {
-            const id = params.id.toString();
-            const response = await fetch(`http://localhost:5050/record/${params.id.toString()}`);
-
-            if (!response.ok) {
-                const message = `An error has occurred: ${response.statusText}`;
-                window.alert(message);
-                return;
-            }
-
-            const record = await response.json();
+        async function getRecordToEdit(id: number) {
+            const record = await coffeeRecordService.getRecordById(id);
             if (!record) {
-                window.alert(`Record with id ${id} not found`);
-                navigate('/');
+                window.alert(`Record with id ${params.id} not found`);
+                redirect('/');
                 return;
             }
-
             setInitialState(record);
             setLoaded(true);
         }
-
-        fetchData();
-
-        return;
+        getRecordToEdit(params.id);
     }, [params.id, navigate]);
 
     async function onSubmit(e: React.FormEvent, editedRecord: CoffeeRecordInterface) {
         e.preventDefault();
         // This will send a post request to update the data in the database.
-        await fetch(`http://localhost:5050/record/${params.id}`, {
-            method: 'PATCH',
-            body: JSON.stringify(editedRecord),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-
+        coffeeRecordService.updateRecord(params.id, editedRecord);
         navigate('/');
     }
 
