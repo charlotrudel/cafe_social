@@ -70,23 +70,22 @@ router.post('/login', (req, res) => {
         });
 });
 
-// This function is called by the /getUsername route and validates the status of the JWT
+// This function is called by the /getUser route and validates the status of the JWT
 function verifyJWT(req, res, callback) {
-    const token = re.headers['x-access-token']?.split(' ')[1];
+    const token = req.headers['x-access-token']?.split(' ')[1];
 
     if (token) {
-        jwt.verify(token, process.env.JWT_SECRET),
-            (err, decoded) => {
-                if (err)
-                    return res.json({
-                        isLoggedIn: false,
-                        message: 'Failed to authenticate',
-                    });
-                req.user = {};
-                req.user.id = decoded.id;
-                req.user.username = decoded.username;
-                callback();
-            };
+        jsonwebtoken.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+            if (err)
+                return res.json({
+                    isLoggedIn: false,
+                    message: 'Failed to authenticate',
+                });
+            req.user = {};
+            req.user.id = decoded.id;
+            req.user.username = decoded.username;
+            callback();
+        });
     } else {
         res.json({ message: 'Incorrect token', isLoggedIn: false });
     }

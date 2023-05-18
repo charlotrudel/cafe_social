@@ -4,6 +4,8 @@ import Navbar from './components/navbar';
 import RecordList from './pages/recordList';
 import Edit from './pages/edit';
 import Create from './pages/create';
+import Login from './pages/login';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
     return (
@@ -12,16 +14,24 @@ function App() {
                 <Navbar />
             </header>
             <Routes>
+                <Route path="/" element={<RecordList />} />
                 <Route
-                    path="/"
+                    path="/edit/:id"
                     element={
-                        <div>
-                            <RecordList />
-                        </div>
+                        <PrivateRoute>
+                            <Edit />
+                        </PrivateRoute>
                     }
                 />
-                <Route path="/edit/:id" element={<Edit />} />
-                <Route path="/create" element={<Create />} />
+                <Route
+                    path="/create"
+                    element={
+                        <PrivateRoute>
+                            <Create />
+                        </PrivateRoute>
+                    }
+                />
+                <Route path="/login" element={<Login />} />
             </Routes>
         </div>
     );
