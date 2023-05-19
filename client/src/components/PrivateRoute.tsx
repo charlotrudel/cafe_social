@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import authService from '../services/authService';
 
 type Props = {
@@ -8,6 +8,7 @@ type Props = {
 
 export default function PrivateRoute({ children }: Props) {
     const navigate = useNavigate();
+    const location = useLocation();
     const [user, setUser] = useState<string>('');
 
     useEffect(() => {
@@ -15,7 +16,7 @@ export default function PrivateRoute({ children }: Props) {
             (name: string) => {
                 setUser(name);
             },
-            () => navigate('/login'),
+            () => navigate('/login', { state: { from: location.pathname } }),
         );
     });
     return user === '' ? <></> : children;
