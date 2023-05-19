@@ -1,4 +1,4 @@
-import CoffeeRecordInterface from '../components/CoffeeRecordInterface';
+import TastingRecordInterface from '../components/TastingRecordInterface';
 
 // This method fetches the records from the database.
 async function getRecords() {
@@ -32,7 +32,7 @@ async function getRecordById(id: number) {
 }
 
 // When a post request is sent to the create url, we'll add a new record to the database.
-async function createRecord(newRecord: CoffeeRecordInterface) {
+async function createRecord(newRecord: TastingRecordInterface) {
     await fetch('/record', {
         method: 'POST',
         headers: {
@@ -44,7 +44,7 @@ async function createRecord(newRecord: CoffeeRecordInterface) {
     });
 }
 
-async function updateRecord(id: number, editedRecord: CoffeeRecordInterface) {
+async function updateRecord(id: number, editedRecord: TastingRecordInterface) {
     await fetch(`/record/${id}`, {
         method: 'PATCH',
         body: JSON.stringify(editedRecord),
@@ -57,7 +57,7 @@ async function updateRecord(id: number, editedRecord: CoffeeRecordInterface) {
 }
 
 // This method will delete a record
-async function deleteRecord(records: CoffeeRecordInterface[], id: number | undefined) {
+async function deleteRecord(records: TastingRecordInterface[], id: number | undefined) {
     await fetch(`/record/${id}`, {
         method: 'DELETE',
     }).catch((error) => {
@@ -65,11 +65,11 @@ async function deleteRecord(records: CoffeeRecordInterface[], id: number | undef
     });
 }
 
-let coffeeRecordService = {
+let tastingRecordService = {
     getRecords,
     getRecordById,
     createRecord,
     updateRecord,
     deleteRecord,
 };
-export default coffeeRecordService;
+export default tastingRecordService;

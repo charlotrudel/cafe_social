@@ -5,14 +5,14 @@ import { ObjectId } from 'mongodb';
 const router = express.Router();
 
 // This section will help you get a list of all the records.
-router.get('/', async (req, res) => {
+router.get('/', async (req: any, res: any) => {
     let collection = await db.collection('records');
     let results = await collection.find({}).toArray();
     res.send(results).status(200);
 });
 
 // This section will help you get a single record by id
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req: any, res: any) => {
     let collection = await db.collection('records');
     let query = { _id: new ObjectId(req.params.id) };
     let result = await collection.findOne(query);
@@ -22,7 +22,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // This section will help you create a new record.
-router.post('/', async (req, res) => {
+router.post('/', async (req: any, res: any) => {
     let newRecord = {
         userName: req.body.userName,
         coffeeName: req.body.coffeeName,
@@ -55,7 +55,7 @@ router.post('/', async (req, res) => {
 });
 
 // This section will help you update a record by id.
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', async (req: any, res: any) => {
     const query = { _id: new ObjectId(req.params.id) };
     const updates = {
         $set: {
@@ -93,7 +93,7 @@ router.patch('/:id', async (req, res) => {
 });
 
 // This section will help you delete a record
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req: any, res: any) => {
     const query = { _id: new ObjectId(req.params.id) };
 
     const collection = db.collection('records');

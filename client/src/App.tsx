@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Navbar from './components/navbar';
-import RecordList from './pages/recordList';
-import Edit from './pages/edit';
-import Create from './pages/create';
-import Login from './pages/login';
+import Navbar from './components/Navbar';
+import RecordList from './pages/RecordList';
+import Edit from './pages/Edit';
+import Create from './pages/Create';
+import Login from './pages/Login';
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {

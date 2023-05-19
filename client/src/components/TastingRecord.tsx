@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon';
-import CoffeeRecordInterface from './CoffeeRecordInterface';
+import TastingRecordInterface from './TastingRecordInterface';
 import coffeeIcon from "../images/coffee_bean.png"
 import { useState } from 'react';
 
 type Props = {
-    record: CoffeeRecordInterface;
+    record: TastingRecordInterface;
     deleteRecord: () => Promise<void>;
 };
 
-export default function CoffeeRecord({ record, deleteRecord }: Props) {
+export default function TastingRecord({ record, deleteRecord }: Props) {
     const [showMore, setShowMore] = useState({
         more: false
     })
@@ -43,16 +43,17 @@ export default function CoffeeRecord({ record, deleteRecord }: Props) {
                 <div className="font-semibold mr-2">{record.userName}</div>
             </div>
             <div className='flex justify-between'>
-                <div className='p-2 mr-2 basis-2/5 border-2 border-darkGray rounded-xl'>
+                <div className='flex flex-col p-2 mr-2 basis-2/5 border-2 border-darkGray rounded-xl gap-2'>
                     <div className="">Nom : {record.coffeeName}</div>
                     <div className="">Torréfacteur : {record.roaster}</div>
                     <div >{record.roast}</div>
                     <div>{record.origin}</div>
-                    <div className="mb-2">{record.process}</div>
+                    <div>{record.process}</div>
+                    <div>{record.roasterNotes}</div>
                 </div>
                 <div className='border-2 border-darkGray rounded-xl p-2 basis-3/5'>
                     <div className="my-2 font-semibold">Note globale : {record.overallScore}/10</div>
-                    <p>{record.flavourNotes}</p>
+                    <p className='whitespace-pre-line'>{record.flavourNotes}</p>
                 </div>
             </div>
             {showMore.more ?
@@ -64,7 +65,7 @@ export default function CoffeeRecord({ record, deleteRecord }: Props) {
                                 <div className=''>Quantité : {record.aromaQuantity}/5</div>
                                 <div>Qualité : {record.aromaQuality}/5</div>
                             </div>
-                            <p className=''>{record.aromaNotes}</p>
+                            <p className='whitespace-pre-line'>{record.aromaNotes}</p>
                         </div>
                         <div className='border-2 border-darkGray rounded-xl p-2 my-2'>
                             <h4 className='font-medium text-lg'>Acidité</h4>
@@ -72,7 +73,7 @@ export default function CoffeeRecord({ record, deleteRecord }: Props) {
                                 <div className=''>Quantité : {record.acidityQuantity}/5</div>
                                 <div>Qualité : {record.acidityQuality}/5</div>
                             </div>
-                            <p className=''>{record.acidityNotes}</p>
+                            <p className='whitespace-pre-line'>{record.acidityNotes}</p>
                         </div>
                         <div className='border-2 border-darkGray rounded-xl p-2 my-2'>
                             <h4 className='font-medium text-lg'>Douceur</h4>
@@ -80,7 +81,7 @@ export default function CoffeeRecord({ record, deleteRecord }: Props) {
                                 <div className=''>Quantité : {record.sweetnessQuantity}/5</div>
                                 <div>Qualité : {record.sweetnessQuality}/5</div>
                             </div>
-                            <p className=''>{record.sweetnessNotes}</p>
+                            <p className='whitespace-pre-line'>{record.sweetnessNotes}</p>
                         </div>
                         <div className='border-2 border-darkGray rounded-xl p-2 my-2'>
                             <h4 className='font-medium text-lg'>Corps</h4>
@@ -88,7 +89,7 @@ export default function CoffeeRecord({ record, deleteRecord }: Props) {
                                 <div className=''>Quantité : {record.bodyQuantity}/5</div>
                                 <div>Qualité : {record.bodyQuality}/5</div>
                             </div>
-                            <p className=''>{record.bodyNotes}</p>
+                            <p className='whitespace-pre-line'>{record.bodyNotes}</p>
                         </div>
                         <div className='border-2 border-darkGray rounded-xl p-2 my-2'>
                             <h4 className='font-medium text-lg'>Finale</h4>
@@ -96,7 +97,7 @@ export default function CoffeeRecord({ record, deleteRecord }: Props) {
                                 <div className=''>Quantité : {record.finishQuantity}/5</div>
                                 <div>Qualité : {record.finishQuality}/5</div>
                             </div>
-                            <p className=''>{record.finishNotes}</p>
+                            <p className='whitespace-pre-line'>{record.finishNotes}</p>
                         </div>
                     </div>
                 </div>

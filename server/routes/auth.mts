@@ -9,7 +9,7 @@ const HASH_ITERATIONS = 10;
 const router = express.Router();
 
 // This route registers a new user with a username, email adress and hashed password
-router.post('/register', async (req, res) => {
+router.post('/register', async (req: any, res: any) => {
     const user = req.body;
 
     const takenUsername = await db.collection('users').findOne({ username: user.username });
@@ -39,7 +39,7 @@ router.post('/login', (req, res) => {
 
     db.collection('users')
         .findOne({ username: userLoggingIn.username })
-        .then((dbUser) => {
+        .then((dbUser: any) => {
             if (!dbUser) {
                 return res.json({ message: 'Invalid username or password' });
             }
@@ -51,7 +51,7 @@ router.post('/login', (req, res) => {
                     };
                     jsonwebtoken.sign(
                         payload,
-                        process.env.JWT_SECRET,
+                        process.env.JWT_SECRET as any,
                         { expiresIn: process.env.JWT_EXPIRES_IN },
                         (err, token) => {
                             if (err) return res.json({ message: 'err' });
@@ -71,11 +71,11 @@ router.post('/login', (req, res) => {
 });
 
 // This function is called by the /getUser route and validates the status of the JWT
-function verifyJWT(req, res, callback) {
+function verifyJWT(req: any, res: any, callback: any) {
     const token = req.headers['x-access-token']?.split(' ')[1];
 
     if (token) {
-        jsonwebtoken.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        jsonwebtoken.verify(token, process.env.JWT_SECRET as any, (err: any, decoded: any) => {
             if (err)
                 return res.json({
                     isLoggedIn: false,
@@ -92,7 +92,7 @@ function verifyJWT(req, res, callback) {
 }
 
 // This route validates the login status and returns user info
-router.get('/getUser', verifyJWT, (req, res) => {
+router.get('/getUser', verifyJWT, (req: any, res: any) => {
     res.json({ isLoggedIn: true, username: req.user.username });
 });
 

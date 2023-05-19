@@ -1,4 +1,4 @@
-export default interface CoffeeRecordInterface {
+export default interface TastingRecordInterface {
     _id?: number;
     userName: string;
     coffeeName: string;

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import CoffeeRecordInterface from './CoffeeRecordInterface';
+import TastingRecordInterface from './TastingRecordInterface';
 import { NavLink } from 'react-router-dom';
 
 type Props = {
     formTitle: string;
-    initialState: CoffeeRecordInterface;
-    onSubmit: (e: React.FormEvent, newRecord: CoffeeRecordInterface) => Promise<void>;
+    initialState: TastingRecordInterface;
+    onSubmit: (e: React.FormEvent, newRecord: TastingRecordInterface) => Promise<void>;
 };
 
-export default function CoffeeRecordForm({ formTitle, initialState, onSubmit }: Props) {
-    const [form, setForm] = useState<CoffeeRecordInterface>(initialState);
+export default function TastingRecordForm({ formTitle, initialState, onSubmit }: Props) {
+    const [form, setForm] = useState<TastingRecordInterface>(initialState);
 
     // These methods will update the state properties.
     function updateForm(value: any) {
@@ -211,70 +211,73 @@ export default function CoffeeRecordForm({ formTitle, initialState, onSubmit }: 
                         onChange={(e) => updateForm({ sweetnessNotes: e.target.value })}
                     />
                 </div>
-                <div>
-                    <h4 className="text-xl font-medium text-center mt-4">Corps</h4>
-                    <label>Quantité</label>
-                    <input
-                        type="number"
-                        id="bodyQuantity"
-                        className="my-1 block w-full px-3 py-2 bg-darkLight border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-coffeeSecond focus:ring-1 focus:ring-coffeeSecond"
-                        min={0}
-                        max={5}
-                        value={form.bodyQuantity}
-                        onChange={(e) => updateForm({ bodyQuantity: e.target.value })}
-                        required
-                    />
-                    <label>Qualité</label>
-                    <input
-                        type="number"
-                        id="bodyQuality"
-                        className="my-1 block w-full px-3 py-2 bg-darkLight border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-coffeeSecond focus:ring-1 focus:ring-coffeeSecond"
-                        min={0}
-                        max={5}
-                        value={form.bodyQuality}
-                        onChange={(e) => updateForm({ bodyQuality: e.target.value })}
-                        required
-                    />
-                    <label>Notes</label>
-                    <textarea
-                        id="bodyNotes"
-                        className="my-1 block w-full px-3 py-2 bg-darkLight border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-coffeeSecond focus:ring-1 focus:ring-coffeeSecond"
-                        value={form.bodyNotes}
-                        onChange={(e) => updateForm({ bodyNotes: e.target.value })}
-                    />
+                <div className='flex col-span-3 justify-around'>
+                    <div>
+                        <h4 className="text-xl font-medium text-center mt-4">Corps</h4>
+                        <label>Quantité</label>
+                        <input
+                            type="number"
+                            id="bodyQuantity"
+                            className="my-1 block w-full px-3 py-2 bg-darkLight border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-coffeeSecond focus:ring-1 focus:ring-coffeeSecond"
+                            min={0}
+                            max={5}
+                            value={form.bodyQuantity}
+                            onChange={(e) => updateForm({ bodyQuantity: e.target.value })}
+                            required
+                        />
+                        <label>Qualité</label>
+                        <input
+                            type="number"
+                            id="bodyQuality"
+                            className="my-1 block w-full px-3 py-2 bg-darkLight border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-coffeeSecond focus:ring-1 focus:ring-coffeeSecond"
+                            min={0}
+                            max={5}
+                            value={form.bodyQuality}
+                            onChange={(e) => updateForm({ bodyQuality: e.target.value })}
+                            required
+                        />
+                        <label>Notes</label>
+                        <textarea
+                            id="bodyNotes"
+                            className="my-1 block w-full px-3 py-2 bg-darkLight border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-coffeeSecond focus:ring-1 focus:ring-coffeeSecond"
+                            value={form.bodyNotes}
+                            onChange={(e) => updateForm({ bodyNotes: e.target.value })}
+                        />
+                    </div>
+                    <div>
+                        <h4 className="text-xl font-medium text-center mt-4">Finale</h4>
+                        <label>Quantité</label>
+                        <input
+                            type="number"
+                            id="finishQuantity"
+                            className="my-1 block w-full px-3 py-2 bg-darkLight border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-coffeeSecond focus:ring-1 focus:ring-coffeeSecond"
+                            min={0}
+                            max={5}
+                            value={form.finishQuantity}
+                            onChange={(e) => updateForm({ finishQuantity: e.target.value })}
+                            required
+                        />
+                        <label>Qualité</label>
+                        <input
+                            type="number"
+                            id="finishQuality"
+                            className="my-1 block w-full px-3 py-2 bg-darkLight border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-coffeeSecond focus:ring-1 focus:ring-coffeeSecond"
+                            min={0}
+                            max={5}
+                            value={form.finishQuality}
+                            onChange={(e) => updateForm({ finishQuality: e.target.value })}
+                            required
+                        />
+                        <label>Notes</label>
+                        <textarea
+                            id="finishNotes"
+                            className="my-1 block w-full px-3 py-2 bg-darkLight border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-coffeeSecond focus:ring-1 focus:ring-coffeeSecond"
+                            value={form.finishNotes}
+                            onChange={(e) => updateForm({ finishNotes: e.target.value })}
+                        />
+                    </div>
                 </div>
-                <div>
-                    <h4 className="text-xl font-medium text-center mt-4">Finale</h4>
-                    <label>Quantité</label>
-                    <input
-                        type="number"
-                        id="finishQuantity"
-                        className="my-1 block w-full px-3 py-2 bg-darkLight border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-coffeeSecond focus:ring-1 focus:ring-coffeeSecond"
-                        min={0}
-                        max={5}
-                        value={form.finishQuantity}
-                        onChange={(e) => updateForm({ finishQuantity: e.target.value })}
-                        required
-                    />
-                    <label>Qualité</label>
-                    <input
-                        type="number"
-                        id="finishQuality"
-                        className="my-1 block w-full px-3 py-2 bg-darkLight border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-coffeeSecond focus:ring-1 focus:ring-coffeeSecond"
-                        min={0}
-                        max={5}
-                        value={form.finishQuality}
-                        onChange={(e) => updateForm({ finishQuality: e.target.value })}
-                        required
-                    />
-                    <label>Notes</label>
-                    <textarea
-                        id="finishNotes"
-                        className="my-1 block w-full px-3 py-2 bg-darkLight border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-coffeeSecond focus:ring-1 focus:ring-coffeeSecond"
-                        value={form.finishNotes}
-                        onChange={(e) => updateForm({ finishNotes: e.target.value })}
-                    />
-                </div>
+
 
                 <div className='row-start-5 col-start-2'>
                     <h4 className="text-xl font-medium text-center mt-4">Notes globales</h4>

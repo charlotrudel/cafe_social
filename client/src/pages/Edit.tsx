@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { redirect } from 'react-router-dom';
-import CoffeeRecordForm from '../components/CoffeeRecordForm';
-import CoffeeRecordInterface, { emptyRecord } from '../components/CoffeeRecordInterface';
-import coffeeRecordService from '../services/coffeeRecordService';
+import TastingRecordForm from '../components/TastingRecordForm';
+import TastingRecordInterface, { emptyRecord } from '../components/TastingRecordInterface';
+import tastingRecordService from '../services/tastingRecordService';
 
 export default function Edit() {
     const params: any = useParams();
     const navigate = useNavigate();
     const [loaded, setLoaded] = useState<boolean>(false);
-    const [initialState, setInitialState] = useState<CoffeeRecordInterface>(emptyRecord);
+    const [initialState, setInitialState] = useState<TastingRecordInterface>(emptyRecord);
 
     useEffect(() => {
         async function getRecordToEdit(id: number) {
-            const record = await coffeeRecordService.getRecordById(id);
+            const record = await tastingRecordService.getRecordById(id);
             if (!record) {
                 window.alert(`Record with id ${params.id} not found`);
                 redirect('/');
@@ -25,17 +25,17 @@ export default function Edit() {
         getRecordToEdit(params.id);
     }, [params.id, navigate]);
 
-    async function onSubmit(e: React.FormEvent, editedRecord: CoffeeRecordInterface) {
+    async function onSubmit(e: React.FormEvent, editedRecord: TastingRecordInterface) {
         e.preventDefault();
         // This will send a post request to update the data in the database.
-        coffeeRecordService.updateRecord(params.id, editedRecord);
+        tastingRecordService.updateRecord(params.id, editedRecord);
         navigate('/');
     }
 
     // This following section will display the form that takes input from the user to update the data.
 
     return loaded ? (
-        <CoffeeRecordForm formTitle="Modifier les notes" initialState={initialState} onSubmit={onSubmit} />
+        <TastingRecordForm formTitle="Modifier les notes" initialState={initialState} onSubmit={onSubmit} />
     ) : (
         <div>loading</div>
     );
