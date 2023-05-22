@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import authService from '../services/authService';
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import authService from "../services/authService";
 
 type Props = {
-    children: any;
+  children: JSX.Element;
 };
 
 export default function PrivateRoute({ children }: Props) {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const [user, setUser] = useState<string>('');
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [user, setUser] = useState<string>("");
 
-    useEffect(() => {
-        authService.getLoginStatus(
-            (name: string) => {
-                setUser(name);
-            },
-            () => navigate('/login', { state: { from: location.pathname } }),
-        );
-    });
-    return user === '' ? <></> : children;
+  useEffect(() => {
+    authService.getLoginStatus(
+      (name: string) => {
+        setUser(name);
+      },
+      () => navigate("/login", { state: { from: location.pathname } })
+    );
+  });
+  return user === "" ? <></> : children;
 }
