@@ -1,10 +1,9 @@
-import { Db, MongoClient } from "mongodb";
+import mongoose from "mongoose";
 
-const connectionString = process.env.ATLAS_URI || "";
+const connectionString = `${process.env.ATLAS_URI}/cafe_social?retryWrites=true&w=majority` || "";
 
-const client = new MongoClient(connectionString);
+let db = mongoose.connection;
 
-let conn: MongoClient = await client.connect();
-let db: Db = conn.db("cafe_social");
+mongoose.connect(connectionString);
 
 export default db;

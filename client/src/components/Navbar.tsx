@@ -7,19 +7,27 @@ import { NavLink } from 'react-router-dom';
 export default function Navbar() {
     return (
         <div>
-            <nav className="flex justify-between items-center">
+            <nav className="flex flex-col sm:flex-row justify-between items-center">
                 <NavLink className="my-4 mx-2 md:m-8" to="/">
                     <h1 className="text-3xl font-bold">Café Social</h1>
                 </NavLink>
 
                 <div className="" id="navbarSupportedContent">
-                    <ul>
+                    <ul className='flex'>
                         <li>
                             <NavLink
                                 to="/create"
                                 className="border rounded-md border-darkLight my-4 mx-2 md:m-8 p-2 bg-darkBlue shadow-sm shadow-darkLight"
                             >
                                 Nouveau café
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/add-roaster"
+                                className="border rounded-md border-darkLight my-4 mx-2 md:m-8 p-2 bg-darkBlue shadow-sm shadow-darkLight"
+                            >
+                                Nouveau torréfacteur
                             </NavLink>
                         </li>
                     </ul>

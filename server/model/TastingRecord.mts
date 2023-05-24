@@ -78,5 +78,5 @@ const tastingRecordSchema = new Schema({
     updatedAt: Date
 });
 
-const tastingRecord = model('tastingRecord', tastingRecordSchema);
-export default tastingRecord;
+const TastingRecord = model('TastingRecord', tastingRecordSchema);
+export default TastingRecord;

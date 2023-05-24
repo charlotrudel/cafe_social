@@ -6,6 +6,7 @@ import Edit from "./pages/Edit";
 import Create from "./pages/Create";
 import Login from "./pages/Login";
 import PrivateRoute from "./components/PrivateRoute";
+import Roaster from "./pages/Roaster";
 
 function App() {
   return (
@@ -28,6 +29,14 @@ function App() {
           element={
             <PrivateRoute>
               <Create />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/add-roaster"
+          element={
+            <PrivateRoute>
+              <Roaster />
             </PrivateRoute>
           }
         />

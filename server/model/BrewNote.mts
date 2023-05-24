@@ -28,5 +28,5 @@ const brewNoteSchema = new Schema({
     updatedAt: Date
 });
 
-const brewNote = model('brewNote', brewNoteSchema);
-export default brewNote;
+const BrewNote = model('BrewNote', brewNoteSchema);
+export default BrewNote;

@@ -1,6 +1,5 @@
 cd server
 ts-node-esm server.mts &
-cd ..
-cd client
+cd ../client
 npm start &
 wait

@@ -18,7 +18,7 @@ export default function RecordList() {
         setRecords([]);
     }
 
-    // This following section will display the table with the records of individuals.
+    // This following section will display the TastingRecords.
     return (
         <div className="flex flex-col">
             <h3 className="text-xl font-bold m-4">Publications</h3>
